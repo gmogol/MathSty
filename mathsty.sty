@@ -1,0 +1,172 @@
+\ProvidesPackage{mathsty}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{enumerate}
+%\usepackage{geometry}
+\usepackage{color}
+\usepackage{todonotes}
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks,
+	citecolor=black,
+	filecolor=black,
+	linkcolor=black,
+	urlcolor=black
+}
+\usepackage{amsthm}
+\usepackage{thmtools}
+
+\usepackage{stmaryrd}
+\usepackage{tikz-cd}
+\usepackage{cleveref}
+\usepackage{ marvosym }
+
+\usepackage{environ}
+
+
+
+%%%%%%%%%%%%%%%
+
+\DeclareFontFamily{OT1}{pzc}{}
+\DeclareFontShape{OT1}{pzc}{m}{it}{<-> s * [1.10] pzcmi7t}{}
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+\DeclareMathAlphabet{\mathbbm}{U}{bbm}{m}{n}
+
+
+%%%%%%%%%%%%%%%
+
+\setlength\parindent{0pt}
+
+%%%%%%%%%%%%%%%
+
+
+
+
+
+%%%%%%%%%%%%%%%
+\makeatletter
+\newcommand{\bigperp}{%
+	\mathop{\mathpalette\bigp@rp\relax}%
+	\displaylimits
+}
+
+\newcommand{\bigp@rp}[2]{%
+	\vcenter{
+		\m@th\hbox{\scalebox{\ifx#1\displaystyle2.1\else1.5\fi}{$#1\perp$}}
+	}%
+}
+\makeatother
+
+%%%%%%%%%%%%%%%
+
+\newcommand{\st}{\; | \;}
+\newcommand{\im}[1]{  \ensuremath{\mathrm{Im}\!\left(#1\right)}}
+\newcommand{\1}[1]{\ensuremath{\mathbbm{1}_{#1}}}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\norm}[1]{\lVert #1 \rVert}
+\newcommand{\ip}[2]{\ensuremath{ \left< {#1}, {#2} \right> } }
+
+\DeclareMathOperator{\diag}{diag}
+
+\newcommand{\nn}{\ensuremath{\mathbb N}}
+\newcommand{\zz}{\ensuremath{\mathbb Z}}
+\newcommand{\qq}{\ensuremath{\mathbb Q}}
+\newcommand{\rr}{\ensuremath{\mathbb R}}
+\newcommand{\cc}{\ensuremath{\mathbb{C}}}
+
+
+
+%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%
+
+
+\newtheoremstyle{theorem}{}{}{\itshape}{}{\color{red}\bfseries}{}{ .5em }{}
+\newtheoremstyle{definition}{}{}{}{}{\color{blue}\bfseries}{}{ .5em}{}
+\newtheoremstyle{lecture_definition}{}{}{}{}{\color{gray}\bfseries}{}{ .5em}{}
+\newtheoremstyle{odef}{}{}{}{}{\bfseries}{}{ .5em}{}
+	
+
+\theoremstyle{theorem}
+\newtheorem{thm}{Theorem}[section]
+
+\theoremstyle{lecture_definition}
+\newtheorem*{ldef}{Lecture Definition}
+\newtheorem*{expl}{Explanation}
+
+\theoremstyle{theorem}
+\newtheorem{prop}[thm]{Proposition}
+
+\theoremstyle{odef}
+\newtheorem{lemma}[thm]{Lemma}
+
+\theoremstyle{odef}
+\newtheorem{example}[thm]{Example}
+
+
+
+
+
+
+
+
+\theoremstyle{odef}
+\newtheorem{corollary}[thm]{Corrolary}
+
+%\declaretheorem[
+%style=def,
+%name=Definition,
+%]{innerdefinition}
+
+\theoremstyle{definition}
+\newtheorem{innerdefinition}[thm]{Definition}
+
+
+%% The following makes the definitions apper in the list of definitions, whithout
+%% adding additional information. For more information visit
+%% http://tex.stackexchange.com/questions/281839/removing-the-extra-information-at-a-definition-thmtoolsamsthm
+
+
+
+\makeatletter
+\newenvironment{defn}[1][]
+{\def\gonenc@thmt@shortoptarg{#1}\innerdefinition}
+{\endinnerdefinition}
+\def\ll@innerdefinition{%
+	\protect\numberline{\csname the\thmt@envname\endcsname}%
+	\thmt@thmname
+	\ifx\@empty\gonenc@thmt@shortoptarg
+	\else
+	\ (\gonenc@thmt@shortoptarg)%
+	\fi}
+
+\def\thmt@listnumwidth{4em}
+\makeatother
+
+
+
+%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%
+
+\newenvironment{inum}{ \begin{enumerate}[(i)] }  { \end{enumerate} }
+\newenvironment{anum}{ \begin{enumerate}[(a)] }  { \end{enumerate} }
+\newenvironment{bem}{\paragraph{Remark:}}{\hfill$//$}
+
+
+
+
+
+
+
+
+
+
+\endinput
